@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="/spisok/add/" method="post">
+    {% csrf_token %}
+    <input type="text" name="spisok_name">
+    <input type="submit" value="Создать список задач">
+
+    {% for s in spisok_name %}
+        <h3>Список{{ s.spisok_name }}</h3>
+        <a href="/tasks/{{ s.id }}/">Перейти к задачам</a>
+
+        <br>
+
+        <a href="/delete_spisok/{{ s.id }}/">Удалить список</a>
+
+        {#        <a  href="/list/spisok/">Перейти к списку</a>#}
+        {#        <a  href="/list/add_task/{{ l.id }}/">#}
+        {#            {% for l in name %}#}
+        {#            <h3>{{ l.id }}</h3>#}
+        {#        {% endfor %}#}
+
+    {% endfor %}
+</form>
+</body>
+</html>
